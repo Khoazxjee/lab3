@@ -1,0 +1,5 @@
+@model ErrorViewModel
+@{ ViewData["Title"] = "Lỗi"; }
+<h1 class="section-title">Không thể xử lý yêu cầu</h1>
+<p>Vui lòng thử lại sau.</p>
+@if (Model.ShowRequestId) { <p>Mã yêu cầu: <code>@Model.RequestId</code></p> }

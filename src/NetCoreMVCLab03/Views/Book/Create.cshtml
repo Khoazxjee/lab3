@@ -1,0 +1,10 @@
+@model Book
+@{
+    ViewData["Title"] = "Thêm mới sách";
+}
+<h2>Thêm mới sách</h2>
+<form asp-action="Create" method="post" enctype="multipart/form-data" class="book-form" novalidate><partial name="_BookForm" model="Model" /></form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/book-form.js" asp-append-version="true"></script>
+}

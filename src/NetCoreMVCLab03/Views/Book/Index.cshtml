@@ -1,0 +1,37 @@
+@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Danh sách các cuốn sách";
+}
+<h2>Danh sách các cuốn sách</h2>
+<form asp-action="Index" method="post" class="book-filter">
+    <select name="AuthorId" class="form-select" aria-label="Tác giả">
+        <option value="">Chọn tác giả</option>
+        @foreach (Microsoft.AspNetCore.Mvc.Rendering.SelectListItem author in ViewBag.authors)
+        { <option value="@author.Value" selected="@(author.Value == (string?)ViewBag.AuthorId)">@author.Text</option> }
+    </select>
+    <select name="GenreId" class="form-select" aria-label="Thể loại">
+        <option value="">Chọn Thể loại</option>
+        @foreach (Microsoft.AspNetCore.Mvc.Rendering.SelectListItem genre in ViewBag.genres)
+        { <option value="@genre.Value" selected="@(genre.Value == ((int?)ViewBag.GenreId)?.ToString())">@genre.Text</option> }
+    </select>
+    <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+    <a asp-action="Create" class="btn btn-danger">Thêm mới</a>
+    @if (!string.IsNullOrEmpty((string?)ViewBag.AuthorId) || ViewBag.GenreId is not null) { <a asp-action="Index">Tất cả sách</a> }
+</form>
+<div class="table-responsive">
+    <table class="table table-bordered book-table">
+        <thead><tr><th>Id</th><th>Tiêu đề</th><th>Tác giả</th><th>Thể loại</th><th>Giá</th><th>Hình ảnh</th><th><span class="visually-hidden">Thao tác</span></th></tr></thead>
+        <tbody>
+        @foreach (var book in Model)
+        {
+            <tr data-book-id="@book.Id">
+                <td>@book.Id</td><td>@book.Title</td><td>@book.AuthorId</td><td>@book.GenreId</td>
+                <td>@book.Price.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)</td>
+                <td><img src="@book.Image" alt="@book.Title" class="book-thumbnail" width="40" height="58" /></td>
+                <td><a asp-action="Edit" asp-route-id="@book.Id" class="btn btn-sm btn-primary">Sửa</a></td>
+            </tr>
+        }
+        @if (!Model.Any()) { <tr><td colspan="7" class="text-center py-4">Không tìm thấy sách phù hợp.</td></tr> }
+        </tbody>
+    </table>
+</div>

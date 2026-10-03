@@ -1,0 +1,7 @@
+@model IEnumerable<Product>
+@{ ViewData["Title"] = "Trang chủ"; }
+<section id="latest-products">
+    <h1 class="section-title">Sản phẩm mới nhất</h1>
+    <partial name="_ProductCards" model="Model" />
+</section>
+@await Component.InvokeAsync("HotProduct")

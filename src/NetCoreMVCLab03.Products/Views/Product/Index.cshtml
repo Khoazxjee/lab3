@@ -1,0 +1,15 @@
+@model IEnumerable<Product>
+@{ ViewData["Title"] = ViewBag.CategoryName ?? "Sản phẩm"; }
+<h1 class="section-title">@(ViewBag.CategoryName ?? "Tất cả sản phẩm")</h1>
+@if (Model.Any())
+{
+    <partial name="_ProductCards" model="Model" />
+}
+else
+{
+    <p class="empty-state">Chưa có sản phẩm trong danh mục này.</p>
+}
+@if (ViewBag.CategoryId is not null)
+{
+    <a class="back-link" asp-action="Index">Tất cả sản phẩm</a>
+}

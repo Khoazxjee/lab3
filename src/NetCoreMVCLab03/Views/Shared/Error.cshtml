@@ -1,0 +1,8 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Có lỗi xảy ra";
+}
+<h2>Không thể xử lý yêu cầu</h2>
+<p>Vui lòng thử lại sau.</p>
+@if (Model.ShowRequestId) { <p>Mã yêu cầu: <code>@Model.RequestId</code></p> }
+<a asp-controller="Home" asp-action="Index">Về trang chủ</a>

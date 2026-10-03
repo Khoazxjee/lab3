@@ -1,0 +1,12 @@
+@model IEnumerable<Product>
+<div class="product-grid">
+    @foreach (var product in Model)
+    {
+        <article class="product-card" data-product-id="@product.Id">
+            <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id">
+                <img src="@product.Image" width="300" height="260" alt="@product.Name" loading="lazy" />
+                <h3>@product.Name</h3>
+            </a>
+        </article>
+    }
+</div>

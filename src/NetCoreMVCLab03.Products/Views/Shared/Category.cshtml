@@ -1,0 +1,10 @@
+@model IEnumerable<Category>
+<section class="category-list" aria-labelledby="categoriesHeading">
+    <h2 class="section-title" id="categoriesHeading">Danh mục sản phẩm</h2>
+    <nav aria-label="Danh mục sản phẩm">
+        @foreach (var category in Model)
+        {
+            <a class="@(ViewBag.CategoryId == category.Id ? "selected" : "")" asp-controller="Product" asp-action="Index" asp-route-categoryId="@category.Id">@category.Name</a>
+        }
+    </nav>
+</section>

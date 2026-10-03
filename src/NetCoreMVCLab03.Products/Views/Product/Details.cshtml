@@ -1,0 +1,7 @@
+@model Product
+@{ ViewData["Title"] = Model.Name; }
+<h1 class="section-title">Chi tiết sản phẩm</h1>
+<div class="product-details">
+    <img src="@Model.Image" alt="@Model.Name" width="480" height="400" />
+    <div><h2>@Model.Name</h2><p>Thương hiệu: Nagakawa</p><p>Mã sản phẩm: NAG0102</p><p>Danh mục: Nồi cơm điện</p><a asp-action="Index">Quay lại danh sách</a></div>
+</div>

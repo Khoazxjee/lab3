@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+<partial name="Banner" />
+<section class="books-section" aria-label="Sách phổ biến">
+    <button type="button" id="loadAjax" class="btn btn-primary" data-url="@Url.Action("PopularBook", "Book")">Tải sách phổ biến</button>
+    <p id="ajaxStatus" class="ajax-status" role="status" aria-live="polite"></p>
+    <div id="data-from-ajax" aria-busy="false"></div>
+</section>
+<section class="books-section" aria-labelledby="popularHeading">
+    <h2 id="popularHeading">Sách nổi bật</h2>
+    <div id="books-from-component">@await Component.InvokeAsync("Book")</div>
+</section>
+@section Scripts {
+    <script src="~/js/home.js" asp-append-version="true"></script>
+}

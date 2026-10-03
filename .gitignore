@@ -1,0 +1,14 @@
+**/bin/
+**/obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.log
+*.zip
+**/App_Data/
+**/TestResults/
+**/wwwroot/images/products/uploads/
+artifacts/
+.env
+.env.*

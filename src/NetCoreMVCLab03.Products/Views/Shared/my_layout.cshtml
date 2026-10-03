@@ -1,0 +1,48 @@
+@inject NetCoreMVCLab03.Products.Services.ProductCatalog Catalog
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - DEMO LAB</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">DEMO LAB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Mở menu"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="navbar-nav">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="About">Giới thiệu</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">Liên hệ</a>
+                        <a class="nav-link" asp-controller="Product" asp-action="Index">Sản phẩm</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container page-layout">
+        <aside>
+            <partial name="Category" model="Catalog.Categories" />
+            <a class="promotion" asp-controller="Product" asp-action="Details" asp-route-id="1">
+                <span>GIA DỤNG NAGAKAWA</span><strong>NAG0102</strong>
+                <img src="~/images/nag0102.jpg" width="260" height="230" alt="Nồi cơm điện Nagakawa NAG0102" />
+                <span class="promotion-link">Khám phá sản phẩm</span>
+            </a>
+        </aside>
+        <main>@RenderBody()</main>
+    </div>
+    <footer>
+        <div class="container footer-columns">
+            <section><h2>GIỚI THIỆU</h2><p>DEMO LAB - Sản phẩm gia dụng cho mỗi gia đình.</p></section>
+            <section><h2>LIÊN HỆ</h2><p>Email: <a href="mailto:demolab@example.com">demolab@example.com</a></p><p>Thông tin liên hệ minh họa.</p></section>
+        </div>
+    </footer>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

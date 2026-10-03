@@ -1,0 +1,18 @@
+@model Book
+@{
+    ViewData["Title"] = Model.Title;
+}
+<h2>@Model.Title</h2>
+<div class="row g-4 book-details">
+    <div class="col-md-3"><img src="@Model.Image" alt="@Model.Title" width="240" height="320" /></div>
+    <div class="col-md-9">
+        <dl class="row">
+            <dt class="col-sm-3">Tác giả</dt><dd class="col-sm-9">@Model.Authors.Single(item => item.Value == Model.AuthorId).Text</dd>
+            <dt class="col-sm-3">Thể loại</dt><dd class="col-sm-9">@Model.Genres.Single(item => item.Value == Model.GenreId.ToString()).Text</dd>
+            <dt class="col-sm-3">Giá sách</dt><dd class="col-sm-9">@Model.Price.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) đ</dd>
+            <dt class="col-sm-3">Tổng số trang</dt><dd class="col-sm-9">@Model.TotalPage</dd>
+        </dl>
+        <p class="book-summary">@(string.IsNullOrWhiteSpace(Model.Sumary) ? "Chưa có giới thiệu." : Model.Sumary)</p>
+        <div class="form-actions"><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Sửa</a><a asp-action="Index">Quay lại danh sách</a></div>
+    </div>
+</div>

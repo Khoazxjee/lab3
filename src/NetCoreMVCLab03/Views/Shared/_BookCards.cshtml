@@ -1,0 +1,13 @@
+@model IEnumerable<Book>
+<div class="row g-3 book-cards">
+    @foreach (var item in Model)
+    {
+        <div class="col-6 col-md-3">
+            <article class="book-card" data-book-id="@item.Id">
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id" class="book-cover"><img src="@item.Image" alt="@item.Title" width="200" height="250" loading="lazy" /></a>
+                <h3><a asp-controller="Book" asp-action="Details" asp-route-id="@item.Id">@item.Title</a></h3>
+                <p>Price: @item.Price.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)</p>
+            </article>
+        </div>
+    }
+</div>
